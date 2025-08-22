@@ -1,50 +1,422 @@
-<style>
-/* Features Section */
-.features {
-    padding: 60px 50px;
-    text-align: center;
-    background-color: #f9f9f9;
-}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamora Store</title>
+    <style>
+        /* Reset بسيط */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-.features h2 {
-    font-size: 36px;
-    color: #ff4c3b;
-    margin-bottom: 50px;
-}
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    justify-items: center;
-}
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-.feature-card {
-    background-color: #fff;
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: 0.3s;
-    text-align: center;
-}
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-.feature-card img {
-    margin-bottom: 20px;
-}
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4c3b;
+        }
 
-.feature-card h3 {
-    font-size: 22px;
-    color: #ff4c3b;
-    margin-bottom: 10px;
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
 
-.feature-card p {
-    font-size: 16px;
-    color: #555;
-}
-</style>
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4c3b;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            background: url('https://images.unsplash.com/photo-1612831661043-7f39f5f5f7f0?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero .btn {
+            background-color: #ff4c3b;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .hero .btn:hover {
+            background-color: #e04335;
+        }
+
+        /* Featured Products */
+        .products {
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .products h2 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #ff4c3b;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .product-card h3 {
+            margin: 15px 0 10px;
+            font-size: 20px;
+        }
+
+        .product-card p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #ff4c3b;
+            font-weight: bold;
+        }
+
+        .product-card button {
+            background-color: #ff4c3b;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .product-card button:hover {
+            background-color: #e04335;
+        }
+
+        /* Collections */
+        .collections {
+            padding: 60px 50px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .collections h2 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #ff4c3b;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .collection-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .collection-card img {
+            transition: 0.3s;
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .collection-card h3 {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: #fff;
+            font-size: 24px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .about h2 {
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #ff4c3b;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 50px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #ff4c3b;
+        }
+
+        .testimonial {
+            margin-bottom: 30px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .testimonial span {
+            font-weight: bold;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .newsletter input[type="email"] {
+            padding: 15px;
+            width: 300px;
+            max-width: 90%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .newsletter button {
+            padding: 15px 30px;
+            border: none;
+            background-color: #ff4c3b;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .newsletter button:hover {
+            background-color: #e04335;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ff4c3b;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Teamora</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>أفضل المنتجات الإلكترونية بأفضل الأسعار</h1>
+        <p>تصفح تشكيلتنا واختر ما يناسبك</p>
+        <button class="btn">تسوق الآن</button>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products">
+        <h2>المنتجات المميزة</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/220" alt="Product 1">
+                <h3>منتج 1</h3>
+                <p>$50</p>
+                <button>أضف إلى السلة</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/220" alt="Product 2">
+                <h3>منتج 2</h3>
+                <p>$70</p>
+                <button>أضف إلى السلة</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/220" alt="Product 3">
+                <h3>منتج 3</h3>
+                <p>$30</p>
+                <button>أضف إلى السلة</button>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/220" alt="Product 4">
+                <h3>منتج 4</h3>
+                <p>$45</p>
+                <button>أضف إلى السلة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections -->
+    <section class="collections">
+        <h2>تشكيلاتنا</h2>
+        <div class="collection-grid">
+            <div class="collection-card">
+                <img src="https://via.placeholder.com/300x200" alt="Collection 1">
+                <h3>إلكترونيات</h3>
+            </div>
+            <div class="collection-card">
+                <img src="https://via.placeholder.com/300x200" alt="Collection 2">
+                <h3>أزياء</h3>
+            </div>
+            <div class="collection-card">
+                <img src="https://via.placeholder.com/300x200" alt="Collection 3">
+                <h3>إكسسوارات</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <h2>عن متجرنا</h2>
+        <p>نحن في Teamora نسعى لتقديم أفضل المنتجات الإلكترونية بأعلى جودة وبأسعار تناسب الجميع. التوصيل السريع وخدمة العملاء المميزة هي أولويتنا.</p>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2>آراء العملاء</h2>
+        <div class="testimonial">
+            <p>"منتجات رائعة وخدمة ممتازة!"</p>
+            <span>– محمد</span>
+        </div>
+        <div class="testimonial">
+            <p>"وصلتني الطلبية في وقت قياسي، شكراً لكم."</p>
+            <span>– سارة</span>
+        </div>
+        <div class="testimonial">
+            <p>"أنصح بهذا المتجر لكل من يبحث عن الجودة."</p>
+            <span>– علي</span>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>اشترك في النشرة البريدية</h2>
+        <input type="email" placeholder="ادخل بريدك الإلكتروني">
+        <button>اشترك</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>حقوق النشر &copy; 2025 Teamora. كل الحقوق محفوظة.</p>
+        <div>
+            <a href="#">فيسبوك</a> |
+            <a href="#">إنستغرام</a> |
+            <a href="#">تويتر</a>
+        </div>
+    </footer>
+
+</body>
+</html>
